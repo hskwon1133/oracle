@@ -1,5 +1,4 @@
-from dataclasses import dataclass
-from unittest import case
+from dataclasses import dataclass, asdict
 
 import oracledb as db
 
@@ -112,11 +111,19 @@ def insert_board_list():
         vo = BoardVO(**d)
         vo_list.append(vo)
 
-    print(vo_list)
+    # print(vo_list)
+    result= []
+    for vo in vo_list:
+        result.append(asdict(vo))
+
+
+    print(result)
 
     conn.commit()
     cursor.close()
     conn.close()
+
+    return result
 
 
 if __name__ == '__main__':
@@ -124,3 +131,4 @@ if __name__ == '__main__':
         is_finish = choose_menu()
         if is_finish == True:
             break
+
