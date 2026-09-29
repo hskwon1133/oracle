@@ -114,11 +114,9 @@ def insert_board_list():
 
     print(vo_list)
 
-
     conn.commit()
     cursor.close()
     conn.close()
-
 
 
 if __name__ == '__main__':
